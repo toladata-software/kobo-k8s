@@ -128,7 +128,7 @@ general:
   replicas: 1
   # The subdomains MUST be reachable since the application will try to call itself at this address
   # If you don't have a working domain yet, you may use forceInternal below to resolve it to the pod's localhost IP
-  externalDomain: example.com
+  externalDomain: toladata.io
   externalScheme: http
   externalPort:
   djangoSecret: EKMvRtT2RFB3xDvFty4SVCsTyaQAHS9aA2mkRqtTp9zQYz48fp
@@ -137,7 +137,7 @@ general:
   superUser:
     username: kobo
     password: kobo
-  supportEmail: support@example.com
+  supportEmail: support@toladata.com
   serviceType: ClusterIP
   # set this to true in order to force internal resolution of external domains.
   # Useful for troubleshooting, but won't work if the schemes are different...
@@ -175,28 +175,28 @@ smtp:
   password: ""
   from: ""
 
-global:
-  redis:
-    # Override this!
-    password: brFdS9b7Xp
-  # Will be used by this and all subcharts
-  storageClass: standard
+#global:
+#  redis:
+#    # Override this!
+#    password: brFdS9b7Xp
+#  # Will be used by this and all subcharts
+#  storageClass: standard
 
-rediscache:
-  enabled: true
-  usePassword: true
-  cluster:
-    # disable slaves
-    enabled: false
-    slaveCount: 1
-
-redismain:
-  enabled: true
-  usePassword: true
-  cluster:
-    # disable slaves
-    enabled: false
-    slaveCount: 1
+#rediscache:
+#  enabled: true
+#  usePassword: true
+#  cluster:
+#    # disable slaves
+#    enabled: false
+#    slaveCount: 1
+#
+#redismain:
+#  enabled: true
+#  usePassword: true
+#  cluster:
+#    # disable slaves
+#    enabled: false
+#    slaveCount: 1
 
 mongodb:
   enabled: true
@@ -218,6 +218,7 @@ mongodb:
         pwd: "{{ .Values.auth.password }}",
         roles: [ { role: 'readWrite', db: "{{ .Values.auth.database }}" } ]
       })
+
 postgresql:
   enabled: true
   kobocatDatabase: kobocat
